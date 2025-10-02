@@ -5,23 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "user_credentials")
+@Table(name = "doctors_specialties")
 @NoArgsConstructor
-@Getter
 @Setter
-public class UserCredential
+@Getter
+public class DoctorSpecialtyEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
+    @Column(name = "doctor_id")
+    private Long doctorId;
 
-    private String password;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @Column(name = "specialty_id")
+    private Long specialtyId;
 }

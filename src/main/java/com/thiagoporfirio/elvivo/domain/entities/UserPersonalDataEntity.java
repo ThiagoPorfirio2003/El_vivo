@@ -5,28 +5,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "appointment_delegates")
+@Table(name = "user_personal_data")
 @NoArgsConstructor
 @Setter
 @Getter
-public class AppointmentDelegate
+public class UserPersonalDataEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "patient_id")
-    private Long patientId;
-    @Column(name = "authorized_patient_id")
-    private Long authorizedPatinetId;
+    private String name;
+    private String surname;
+    private LocalDate birthDate;
 
-    @Column(name = "valid_from")
-    private LocalDateTime validFrom;
-    @Column(name = "valid_to")
-    private LocalDateTime validTo;
+    private String dni;
+
+    @Column(name = "img_name")
+    private String imgName;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
