@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "diagnosis")
+@Table(name = "diagnoses")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -18,22 +18,24 @@ public class Diagnosis
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /*
     @Column(name = "completed_appointment_id")
     private Long completedAppointmentId;
-
+    */
     private String treatment;
 
-    /*
-    @Column(name = "weightKG")
-    private BigDecimal weight  Kg;
+    @Column(name = "weight_kg")
+    private BigDecimal weightKg;
 
-    */
-    /*
-    private String treatment;
+    @Column(name = "height_cm")
+    private BigDecimal heightCm;
 
-    @Column(name = "icd10_code")
-    private String icd10Code;
+    @Column(name = "temperature_celcius")
+    private BigDecimal temperatureCelcius;
 
-    private String note;
-    */
+    @Column(name = "systolic_pressure")
+    private Integer systolicPressure;
+
+    @Column(name = "diastolic_pressure")
+    private Integer diastolicPressure;
 }
