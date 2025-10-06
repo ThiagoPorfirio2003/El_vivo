@@ -1,24 +1,29 @@
 package com.thiagoporfirio.elvivo.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "doctors_specialties")
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
-@Getter
+@EqualsAndHashCode
 public class DoctorSpecialtyEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private DoctorSpecialtyId id;
 
-    @Column(name = "doctor_id")
-    private Long doctorId;
+    public Long getDoctorId()
+    {
+        return this.id.getDoctorId();
+    }
 
-    @Column(name = "specialty_id")
-    private Long specialtyId;
+    public Long getSpecialtyId()
+    {
+        return this.id.getSpecialtyId();
+    }
 }

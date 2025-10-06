@@ -1,4 +1,4 @@
-package com.thiagoporfirio.elvivo.domain.entities;
+package com.thiagoporfirio.elvivo.domain.entities.appointment;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,20 +8,16 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user_credentials")
+@Table(name = "scheduled_appointments")
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserCredentialEntity
+public class ScheduledAppointment
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
-
-    private String password;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @Column(name = "scheduled_at")
+    private LocalDateTime scheduledAt;
 }

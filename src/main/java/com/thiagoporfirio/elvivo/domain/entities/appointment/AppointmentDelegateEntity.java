@@ -1,4 +1,4 @@
-package com.thiagoporfirio.elvivo.domain.entities;
+package com.thiagoporfirio.elvivo.domain.entities.appointment;
 
 import jakarta.persistence.*;
 import lombok.Getter;

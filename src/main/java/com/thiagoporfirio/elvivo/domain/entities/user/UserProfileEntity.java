@@ -1,4 +1,4 @@
-package com.thiagoporfirio.elvivo.domain.entities;
+package com.thiagoporfirio.elvivo.domain.entities.user;
 
 import com.thiagoporfirio.elvivo.utils.enums.UserRoles;
 import jakarta.persistence.*;
@@ -24,7 +24,7 @@ public class UserProfileEntity
     private UserRoles userRole;
 
     @Column(name = "is_enabled")
-    private Boolean isEnabled;
+    private boolean isEnabled;
 
     @Column(name = "user_credential_id")
     private Long userCredentialId;
