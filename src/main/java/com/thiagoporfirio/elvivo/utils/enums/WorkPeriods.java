@@ -5,5 +5,4 @@ public enum WorkPeriods
     MORNING,
     NOON,
     AFTERNOON,
-    NIGHT
 }

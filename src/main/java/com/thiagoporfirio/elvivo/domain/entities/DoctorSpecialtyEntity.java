@@ -15,15 +15,15 @@ import lombok.Setter;
 public class DoctorSpecialtyEntity
 {
     @EmbeddedId
-    private DoctorSpecialtyId id;
+    private DoctorSpecialtyId doctorSpecialtyId;
 
     public Long getDoctorId()
     {
-        return this.id.getDoctorId();
+        return this.doctorSpecialtyId.getDoctorId();
     }
 
     public Long getSpecialtyId()
     {
-        return this.id.getSpecialtyId();
+        return this.doctorSpecialtyId.getSpecialtyId();
     }
 }

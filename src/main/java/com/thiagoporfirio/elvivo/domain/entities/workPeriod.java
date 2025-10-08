@@ -1,28 +1,28 @@
 package com.thiagoporfirio.elvivo.domain.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalTime;
+
 @Entity
-@Table(name = "specialties")
+@Table(name = "work_periods")
 @NoArgsConstructor
-@Setter
 @Getter
-public class SpecialtyEntity
+@Setter
+public class workPeriod
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Byte id;
 
     private String name;
 
-    /*
-    @Column(name = "img_name")
-    private String imgName;
-    */
-
-    @Column(name = "avg_appointment_minutes")
-    private Integer avgAppointmentMinutes;
+    @Column(name = "start_time")
+    private LocalTime startTime;
+    @Column(name = "end_time")
+    private LocalTime endTime;
 }

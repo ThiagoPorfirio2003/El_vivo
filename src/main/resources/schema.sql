@@ -11,7 +11,7 @@ CREATE TABLE user_personal_data (
     surname VARCHAR(50) NOT NULL,
     birth_date DATE NOT NULL,
     dni VARCHAR(12) NOT NULL UNIQUE,
-    img_name VARCHAR(50) NOT NULL,
+    img_name VARCHAR(50) NOT NULL UNIQUE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -23,7 +23,8 @@ CREATE TABLE user_profiles (
     user_personal_data_id BIGINT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_credential_id) REFERENCES user_credentials(id),
-    FOREIGN KEY (user_personal_data_id) REFERENCES user_personal_data(id)
+    FOREIGN KEY (user_personal_data_id) REFERENCES user_personal_data(id),
+    UNIQUE (role, user_personal_data_id)
 );
 
 CREATE TABLE appointments_delegates (
@@ -34,16 +35,23 @@ CREATE TABLE appointments_delegates (
     valid_to TIMESTAMP NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    UNIQUE (patient_id, authorized_patient_id),
     FOREIGN KEY (patient_id) REFERENCES user_profiles(id),
-    FOREIGN KEY (authorized_patient_id) REFERENCES user_profiles(id)
+    FOREIGN KEY (authorized_patient_id) REFERENCES user_profiles(id),
+    UNIQUE (patient_id, authorized_patient_id)
 );
-
 
 CREATE TABLE specialties (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    img_name VARCHAR(125) NOT NULL
+    name VARCHAR(100) NOT NULL UNIQUE,
+    -- img_name VARCHAR(125) NOT NULL UNIQUE,
+    avg_appointment_minutes INT NOT NULL DEFAULT 30
+);
+
+CREATE TABLE work_periods(
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL UNIQUE,
+    start_time TIME,
+    end_time TIME
 );
 
 CREATE TABLE doctors_specialties (
@@ -56,11 +64,13 @@ CREATE TABLE doctors_specialties (
 
 CREATE TABLE doctors_schedules (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    work_period VARCHAR(20) NOT NULL,
+    work_period_id TINYINT UNSIGNED NOT NULL,
     week_day VARCHAR(20) NOT NULL,
     doctor_id BIGINT NOT NULL,
     specialty_id BIGINT NOT NULL,
-    FOREIGN KEY (doctor_id, specialty_id) REFERENCES doctors_specialties(doctor_id, specialty_id)
+    FOREIGN KEY (doctor_id, specialty_id) REFERENCES doctors_specialties(doctor_id, specialty_id),
+    FOREIGN KEY (work_period_id) REFERENCES work_periods(id),
+    UNIQUE (work_period_id, week_day, doctor_id)
 );
 
 CREATE TABLE appointments (

@@ -8,22 +8,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.DayOfWeek;
-
 @Entity
 @Table(name = "doctors_schedules")
 @NoArgsConstructor
 @Getter
 @Setter
-public class DoctorSchedule
+public class DoctorScheduleEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "work_period")
-    @Enumerated(EnumType.STRING)
-    private WorkPeriods workPeriod;
+    @Column(name = "work_period_id")
+    private Byte work_period_id ;
     @Column(name = "week_day")
     @Enumerated(EnumType.STRING)
     private WeekDays weekDay;
