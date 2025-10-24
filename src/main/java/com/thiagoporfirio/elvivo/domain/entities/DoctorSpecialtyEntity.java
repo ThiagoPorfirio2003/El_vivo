@@ -17,12 +17,12 @@ public class DoctorSpecialtyEntity
     @EmbeddedId
     private DoctorSpecialtyId doctorSpecialtyId;
 
-    public Long getDoctorId()
+    public Integer getDoctorId()
     {
         return this.doctorSpecialtyId.getDoctorId();
     }
 
-    public Long getSpecialtyId()
+    public Short getSpecialtyId()
     {
         return this.doctorSpecialtyId.getSpecialtyId();
     }

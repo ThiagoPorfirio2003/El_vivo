@@ -1,7 +1,6 @@
 package com.thiagoporfirio.elvivo.domain.entities;
 
-import com.thiagoporfirio.elvivo.utils.enums.WeekDays;
-import com.thiagoporfirio.elvivo.utils.enums.WorkPeriods;
+import com.thiagoporfirio.elvivo.domain.enums.WeekDays;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -17,10 +16,10 @@ public class DoctorScheduleEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "work_period_id")
-    private Byte work_period_id ;
+    private Byte workPeriodId ;
     @Column(name = "week_day")
     @Enumerated(EnumType.STRING)
     private WeekDays weekDay;
@@ -29,12 +28,12 @@ public class DoctorScheduleEntity
     @Getter(AccessLevel.NONE)
     private DoctorSpecialtyId doctorSpecialtyId;
 
-    public Long getDoctorId()
+    public Integer getDoctorId()
     {
         return this.doctorSpecialtyId.getDoctorId();
     }
 
-    public Long getSpecialtyId()
+    public Short getSpecialtyId()
     {
         return this.doctorSpecialtyId.getSpecialtyId();
     }

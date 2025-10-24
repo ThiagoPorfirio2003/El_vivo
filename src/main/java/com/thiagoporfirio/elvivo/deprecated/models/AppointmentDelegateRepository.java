@@ -1,12 +1,9 @@
-package com.thiagoporfirio.elvivo.domain.repositories.appointment;
-
-import com.thiagoporfirio.elvivo.domain.entities.appointment.AppointmentDelegateEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+package com.thiagoporfirio.elvivo.deprecated.models;
 
 import java.util.Optional;
 import java.util.Set;
 
-public interface AppointmentDelegateRepository extends JpaRepository<AppointmentDelegateEntity, Long>
+public interface AppointmentDelegateRepository// extends JpaRepository<AppointmentDelegateEntity, Long>
 {
     public Set<AppointmentDelegateEntity> findAllByPatientId(Long patientId);
     public Set<AppointmentDelegateEntity> findAllByAuthorizedPatientId(Long authorizedPatientId);

@@ -1,8 +1,8 @@
 package com.thiagoporfirio.elvivo.domain.entities.appointment;
 
 import com.thiagoporfirio.elvivo.domain.entities.DoctorSpecialtyId;
-import com.thiagoporfirio.elvivo.utils.enums.AppointmentStates;
-import com.thiagoporfirio.elvivo.utils.enums.AppointmentTypes;
+import com.thiagoporfirio.elvivo.domain.enums.AppointmentStates;
+import com.thiagoporfirio.elvivo.domain.enums.AppointmentTypes;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -20,7 +20,7 @@ public class AppointmentEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     private AppointmentTypes type;
@@ -30,37 +30,36 @@ public class AppointmentEntity
     //Mas adelante
     //private AppointmentServices service
 
-    /*
-    @Column(name = "specialty_id")
-    private Long specialtyId;
-    @Column(name = "doctor_id")
-    private Long doctorId;
-    */
-
     @Embedded
     @Getter(AccessLevel.NONE)
     private DoctorSpecialtyId doctorSpecialtyId;
 
     @Column(name = "patient_id")
-    private Long patientId;
+    private Integer patientId;
 
+    /*
     @Column(name = "requested_by_profile_id")
     private Long requestedByProfileId;
+    */
 
+    /*
     @Column(name = "state_changed_by_profile_id")
     private Long stateChangedByProfileId;
+    */
+    /*
     @Column(name = "state_changed_at")
     private LocalDateTime stateChangedAt;
+    */
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    public Long getDoctorId()
+    public Integer getDoctorId()
     {
         return this.doctorSpecialtyId.getDoctorId();
     }
 
-    public Long getSpecialtyId()
+    public Short getSpecialtyId()
     {
         return this.doctorSpecialtyId.getSpecialtyId();
     }

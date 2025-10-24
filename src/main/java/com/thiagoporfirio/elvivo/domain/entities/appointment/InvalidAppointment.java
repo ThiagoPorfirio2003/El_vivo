@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "invalid_appointments")
 @NoArgsConstructor
@@ -14,7 +16,10 @@ public class InvalidAppointment
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String reason;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 }

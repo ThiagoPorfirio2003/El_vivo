@@ -1,6 +1,6 @@
 package com.thiagoporfirio.elvivo.domain.entities.user;
 
-import com.thiagoporfirio.elvivo.utils.enums.UserRoles;
+import com.thiagoporfirio.elvivo.domain.enums.UserRoles;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class UserProfileEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "role")
@@ -27,10 +27,10 @@ public class UserProfileEntity
     private boolean isEnabled;
 
     @Column(name = "user_credential_id")
-    private Long userCredentialId;
+    private Integer userCredentialId;
 
     @Column(name = "user_personal_data_id")
-    private Long userPersonalDataId;
+    private Integer userPersonalDataId;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

@@ -1,7 +1,7 @@
 package com.thiagoporfirio.elvivo.domain.entities;
 
+import com.thiagoporfirio.elvivo.domain.enums.WorkPeriods;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,13 +13,14 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class workPeriod
+public class WorkPeriod
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Byte id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private WorkPeriods name;
 
     @Column(name = "start_time")
     private LocalTime startTime;

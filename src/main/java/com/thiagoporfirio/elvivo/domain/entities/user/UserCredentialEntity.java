@@ -1,9 +1,7 @@
 package com.thiagoporfirio.elvivo.domain.entities.user;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -16,12 +14,19 @@ public class UserCredentialEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String email;
 
     private String password;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    public UserCredentialEntity(String email, String password)
+    {
+        this.email = email;
+        this.password = password;
+    }
+
 }

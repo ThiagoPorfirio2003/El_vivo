@@ -1,4 +1,4 @@
-package com.thiagoporfirio.elvivo.utils.enums;
+package com.thiagoporfirio.elvivo.domain.enums;
 
 public enum AppointmentStates
 {

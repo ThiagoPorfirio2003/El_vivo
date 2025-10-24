@@ -16,12 +16,13 @@ public class Diagnosis
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     /*
     @Column(name = "completed_appointment_id")
     private Long completedAppointmentId;
     */
+
     private String treatment;
 
     @Column(name = "weight_kg")
@@ -34,8 +35,8 @@ public class Diagnosis
     private BigDecimal temperatureCelcius;
 
     @Column(name = "systolic_pressure")
-    private Integer systolicPressure;
+    private Short systolicPressure;
 
     @Column(name = "diastolic_pressure")
-    private Integer diastolicPressure;
+    private Short diastolicPressure;
 }

@@ -14,14 +14,12 @@ public class SpecialtyEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Short id;
 
     private String name;
 
-    /*
     @Column(name = "img_name")
     private String imgName;
-    */
 
     @Column(name = "avg_appointment_minutes")
     private Integer avgAppointmentMinutes;

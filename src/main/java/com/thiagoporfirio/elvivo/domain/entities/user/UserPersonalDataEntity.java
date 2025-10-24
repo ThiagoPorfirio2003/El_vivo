@@ -17,10 +17,11 @@ public class UserPersonalDataEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String name;
     private String surname;
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     private String dni;

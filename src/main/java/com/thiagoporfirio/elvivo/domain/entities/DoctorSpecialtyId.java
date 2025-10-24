@@ -13,7 +13,7 @@ import lombok.*;
 public class DoctorSpecialtyId
 {
     @Column(name = "doctor_id")
-    private Long doctorId;
+    private Integer doctorId;
     @Column(name = "specialty_id")
-    private Long specialtyId;
+    private Short specialtyId;
 }

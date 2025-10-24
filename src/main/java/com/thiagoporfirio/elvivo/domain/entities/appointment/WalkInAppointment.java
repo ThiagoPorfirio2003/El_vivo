@@ -14,7 +14,7 @@ public class WalkInAppointment
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "position_in_queue")
     private byte positionInQueue;

@@ -16,13 +16,15 @@ public class CompletedAppointment
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "check_in_time")
     private LocalDateTime CheckInTime;
     @Column(name = "check_out_time")
     private LocalDateTime checkOutTime;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
     /*
     private boolean isPatientSurveyCompleted;
     private boolean isDoctorSurveyCompleted;
