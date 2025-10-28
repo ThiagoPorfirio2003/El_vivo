@@ -29,6 +29,15 @@ public class UserPersonalDataEntity
     @Column(name = "img_name")
     private String imgName;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    public UserPersonalDataEntity(String name, String surname, LocalDate birthDate, String dni, String imgName)
+    {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.dni = dni;
+        this.imgName =imgName;
+    }
 }
