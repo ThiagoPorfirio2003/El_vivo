@@ -1,12 +1,9 @@
 package com.thiagoporfirio.elvivo.domain.repositories.user;
 
 import com.thiagoporfirio.elvivo.domain.entities.user.UserCredentialEntity;
-import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest
@@ -22,20 +19,20 @@ public class UserCredentialRepositoryTests
     }
 
     @Test
-    public void UserCredentialRepository_findByEmail_ReturnsNullEntity()
+    public void findByEmail_emailDoesNotExist_returnsEmptyOptional()
     {
         //Arrange
         var emailToFind = "doesnotexist@gmail.com";
 
         //Act
-        var optionalEntity = this.userCredentialRepository.findByEmail(emailToFind);
+        var isEmptyOptional = this.userCredentialRepository.findByEmail(emailToFind).isEmpty();
 
         //Assert
-        Assertions.assertThat(optionalEntity.isPresent()).isFalse();
+        Assertions.assertThat(isEmptyOptional).isTrue();
     }
 
     @Test
-    public void UserCredentialRepository_findByEmail_ReturnsAnExistingEntity()
+    public void findByEmail_emailExists_returnsOptionalWithUserCredential()
     {
         //Arrange
         var entityToCompare = new UserCredentialEntity("test981@testing.com", "abc123zxy987");
@@ -53,7 +50,7 @@ public class UserCredentialRepositoryTests
     }
 
     @Test
-    public void UserCredentialRepository_existsByEmail_ReturnsFalse()
+    public void existsByEmail_emailDoesNotExist_returnsFalse()
     {
         var userCredentialExists = this.userCredentialRepository.existsByEmail("doesNotExist@gmail.com");
 
@@ -61,7 +58,7 @@ public class UserCredentialRepositoryTests
     }
 
     @Test
-    public void UserCredentialRepository_existsByEmail_ReturnsTrue()
+    public void existsByEmail_emailExists_returnsTrue()
     {
         var entityToCompare = new UserCredentialEntity("test981@testing.com", "abc123zxy987");
         this.userCredentialRepository.save(entityToCompare);

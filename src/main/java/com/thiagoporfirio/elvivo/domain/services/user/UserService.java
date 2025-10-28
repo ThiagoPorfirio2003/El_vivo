@@ -1,4 +1,4 @@
-package com.thiagoporfirio.elvivo.servicies.user;
+package com.thiagoporfirio.elvivo.domain.services.user;
 
 import com.thiagoporfirio.elvivo.domain.entities.user.UserCredentialEntity;
 import com.thiagoporfirio.elvivo.domain.entities.user.UserPersonalDataEntity;
@@ -10,6 +10,8 @@ import com.thiagoporfirio.elvivo.domain.repositories.user.UserProfileRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @AllArgsConstructor
@@ -43,12 +45,11 @@ public class UserService
             throw new DuplicateEntityException(UserPersonalDataEntity.class.getSimpleName(), "dni", userPersonalDataEntity.getDni());
         }
     }
-
     */
     @Transactional
     public void createAccount(UserCredentialEntity userCredentialEntity,
-                              UserProfileEntity userProfileEntity,
-                              UserPersonalDataEntity userPersonalDataEntity)
+                              UserPersonalDataEntity userPersonalDataEntity,
+                              UserProfileEntity userProfileEntity)
     {
         this.validateUserCredentialToCreate(userCredentialEntity);
         this.validateUserPersonalDataToCreate(userPersonalDataEntity);

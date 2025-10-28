@@ -1,4 +1,4 @@
-package com.thiagoporfirio.elvivo.servicies.user;
+package com.thiagoporfirio.elvivo.domain.services.user;
 
 import com.thiagoporfirio.elvivo.domain.entities.user.UserProfileEntity;
 import com.thiagoporfirio.elvivo.domain.repositories.user.UserProfileRepository;

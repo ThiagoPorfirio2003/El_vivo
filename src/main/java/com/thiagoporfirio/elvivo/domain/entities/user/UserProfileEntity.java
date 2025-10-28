@@ -34,4 +34,18 @@ public class UserProfileEntity
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    public UserProfileEntity(UserRoles userRole, boolean isEnabled)
+    {
+        this.userRole = userRole;
+        this.isEnabled = isEnabled;
+    }
+
+    public UserProfileEntity(UserRoles userRole, boolean isEnabled, Integer userCredentialId, Integer userPersonalDataId)
+    {
+        this.userRole = userRole;
+        this.isEnabled = isEnabled;
+        this.userCredentialId = userCredentialId;
+        this.userPersonalDataId = userPersonalDataId;
+    }
 }

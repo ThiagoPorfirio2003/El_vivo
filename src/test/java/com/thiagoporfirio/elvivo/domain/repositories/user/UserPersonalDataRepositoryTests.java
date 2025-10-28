@@ -20,7 +20,7 @@ public class UserPersonalDataRepositoryTests
     }
 
     @Test
-    public void userPersonalDataRepository_existsByDni_returnTrue()
+    public void existsByDni_dniExists_returnsTrue()
     {
         String dniToFind = "49539113";
 
@@ -35,5 +35,15 @@ public class UserPersonalDataRepositoryTests
         var userPersonalDataExists = this.userPersonalDataRepository.existsByDni(dniToFind);
 
         Assertions.assertTrue(userPersonalDataExists);
+    }
+
+    @Test
+    public void existsByDni_dniDoesNotExist_returnsFalse()
+    {
+        String dniToFind = "49539113";
+
+        var userPersonalDataExists = this.userPersonalDataRepository.existsByDni(dniToFind);
+
+        Assertions.assertFalse(userPersonalDataExists);
     }
 }
