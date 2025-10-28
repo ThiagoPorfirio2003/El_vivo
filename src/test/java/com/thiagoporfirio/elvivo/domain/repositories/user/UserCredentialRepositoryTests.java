@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+//@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class UserCredentialRepositoryTests
 {
     private final UserCredentialRepository userCredentialRepository;
@@ -24,11 +24,17 @@ public class UserCredentialRepositoryTests
     @Test
     public void UserCredentialRepository_findByEmail_ReturnsNullEntity()
     {
+        //Arrange
+        var emailToFind = "doesnotexist@gmail.com";
 
+        //Act
+        var optionalEntity = this.userCredentialRepository.findByEmail(emailToFind);
+
+        //Assert
+        Assertions.assertThat(optionalEntity.isPresent()).isFalse();
     }
 
     @Test
-    @Transactional
     public void UserCredentialRepository_findByEmail_ReturnsAnExistingEntity()
     {
         //Arrange
@@ -36,10 +42,32 @@ public class UserCredentialRepositoryTests
         this.userCredentialRepository.save(entityToCompare);
 
         //Act
-        var foundEntity = this.userCredentialRepository.findByEmail(entityToCompare.getEmail()).get();
+        var optionalEntity = this.userCredentialRepository.findByEmail(entityToCompare.getEmail());
 
         //Assert
-        Assertions.assertThat(foundEntity).isNotNull();
+        Assertions.assertThat(optionalEntity.isPresent()).isTrue();
+        var foundEntity = optionalEntity.get();
+
+        Assertions.assertThat(foundEntity.getId()).isNotNull();
         Assertions.assertThat(foundEntity.getEmail()).isEqualTo(entityToCompare.getEmail());
+    }
+
+    @Test
+    public void UserCredentialRepository_existsByEmail_ReturnsFalse()
+    {
+        var userCredentialExists = this.userCredentialRepository.existsByEmail("doesNotExist@gmail.com");
+
+        Assertions.assertThat(userCredentialExists).isFalse();
+    }
+
+    @Test
+    public void UserCredentialRepository_existsByEmail_ReturnsTrue()
+    {
+        var entityToCompare = new UserCredentialEntity("test981@testing.com", "abc123zxy987");
+        this.userCredentialRepository.save(entityToCompare);
+
+        var userCredentialExists = this.userCredentialRepository.existsByEmail(entityToCompare.getEmail());
+
+        Assertions.assertThat(userCredentialExists).isTrue();
     }
 }
