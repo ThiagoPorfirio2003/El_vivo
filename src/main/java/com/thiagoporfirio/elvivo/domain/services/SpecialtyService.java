@@ -1,7 +1,7 @@
-package com.thiagoporfirio.elvivo.domain.services.user;
+package com.thiagoporfirio.elvivo.domain.services;
 
 import com.thiagoporfirio.elvivo.domain.entities.SpecialtyEntity;
-import com.thiagoporfirio.elvivo.domain.entities.user.UserCredentialEntity;
+import com.thiagoporfirio.elvivo.domain.entities.user.UserPersonalDataEntity;
 import com.thiagoporfirio.elvivo.domain.exceptions.DuplicateEntityException;
 import com.thiagoporfirio.elvivo.domain.repositories.SpecialtyRepository;
 import lombok.AllArgsConstructor;
@@ -20,11 +20,16 @@ public class SpecialtyService
             throw new DuplicateEntityException(SpecialtyEntity.class.getSimpleName(), "name", specialtyEntity.getName());
         }
 
-        /*
-        if()
+        if(this.specialtyRepository.existsByImgName(specialtyEntity.getImgName()))
         {
-
+            throw new DuplicateEntityException(SpecialtyEntity.class.getSimpleName(), "img_name", specialtyEntity.getImgName());
         }
-        */
+    }
+
+    public void createSpecialty(SpecialtyEntity specialtyEntity)
+    {
+        this.validateToCreate(specialtyEntity);
+
+        this.specialtyRepository.save(specialtyEntity);
     }
 }

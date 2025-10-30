@@ -81,7 +81,7 @@ public class UserServiceTests
     }
 
     @Test
-    public void createAccount_validData_savedAllEntitiesSuccessfully()
+    public void createAccount_validData_saveAllEntitiesSuccessfully()
     {
         //Arrange
         var userProfile = new UserProfileEntity(UserRoles.PATIENT, true );
