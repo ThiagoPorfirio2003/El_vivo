@@ -44,7 +44,7 @@ CREATE TABLE specialties (
     id SMALLINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     img_name VARCHAR(125) NOT NULL UNIQUE,
-    avg_appointment_minutes INT NOT NULL DEFAULT 30
+    avg_appointment_minutes SMALLINT NOT NULL DEFAULT 30
 );
 
 CREATE TABLE work_periods(

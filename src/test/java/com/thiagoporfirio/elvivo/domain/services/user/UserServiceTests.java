@@ -17,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @ExtendWith(MockitoExtension.class)
@@ -53,33 +52,6 @@ public class UserServiceTests
         userPersonalData.setId(1);
         userPersonalData.setCreatedAt(LocalDateTime.now());
     }
-
-    /*
-    private void validateUserPersonalDataToCreate(UserPersonalDataEntity userPersonalDataEntity)
-    {
-        if(this.userPersonalDataRepository.existsByDni(userPersonalDataEntity.getDni()))
-        {
-            throw new DuplicateEntityException(UserPersonalDataEntity.class.getSimpleName(), "dni", userPersonalDataEntity.getDni());
-        }
-    }
-
-        @Transactional
-    public void createAccount(UserCredentialEntity userCredentialEntity,
-                              UserProfileEntity userProfileEntity,
-                              UserPersonalDataEntity userPersonalDataEntity)
-    {
-        this.validateUserCredentialToCreate(userCredentialEntity);
-        this.validateUserPersonalDataToCreate(userPersonalDataEntity);
-
-        this.userCredentialRepository.save(userCredentialEntity);
-        this.userPersonalDataRepository.save(userPersonalDataEntity);
-
-        userProfileEntity.setUserCredentialId(userCredentialEntity.getId());
-        userProfileEntity.setUserPersonalDataId(userPersonalDataEntity.getId());
-
-        this.userProfileRepository.save(userProfileEntity);
-    }
-     */
 
     @Test
     public void createAccount_invalidUserCredential_throwsDuplicateEntityException()

@@ -22,5 +22,12 @@ public class SpecialtyEntity
     private String imgName;
 
     @Column(name = "avg_appointment_minutes")
-    private Integer avgAppointmentMinutes;
+    private Short avgAppointmentMinutes;
+
+    public SpecialtyEntity(String name, String imgName, Short avgAppointmentMinutes)
+    {
+        this.name = name;
+        this.imgName = imgName;
+        this.avgAppointmentMinutes = avgAppointmentMinutes;
+    }
 }
