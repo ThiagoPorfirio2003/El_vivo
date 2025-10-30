@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserPersonalDataRepository extends JpaRepository<UserPersonalDataEntity, Integer>
 {
     public boolean existsByDni(String dni);
+    public boolean existsByImgName(String imgName);
 }

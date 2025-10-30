@@ -46,4 +46,28 @@ public class UserPersonalDataRepositoryTests
 
         Assertions.assertFalse(userPersonalDataExists);
     }
+
+    @Test
+    public void existsImgName_imgNameDoesNotExist_returnsFalse()
+    {
+        boolean userPersonalDataExists = this.userPersonalDataRepository.existsByImgName("no_existe.jpg");
+
+        org.assertj.core.api.Assertions.assertThat(userPersonalDataExists).isFalse();
+    }
+
+    @Test
+    public void existsByImgName_imgNameExists_returnsTrue()
+    {
+        var userPersonalDataToSave = this.userPersonalDataRepository.save(
+                new UserPersonalDataEntity(
+                        "Juan Manuel",
+                        "Belgrano",
+                        LocalDate.of(1999, 3, 14),
+                        "30194210",
+                        "juan.23123.jpg"));
+
+        boolean userPersonalDataExists = this.userPersonalDataRepository.existsByImgName(userPersonalDataToSave.getImgName());
+
+        org.assertj.core.api.Assertions.assertThat(userPersonalDataExists).isTrue();
+    }
 }

@@ -35,6 +35,11 @@ public class UserService
         {
             throw new DuplicateEntityException(UserPersonalDataEntity.class.getSimpleName(), "dni", userPersonalDataEntity.getDni());
         }
+
+        if(this.userPersonalDataRepository.existsByImgName(userPersonalDataEntity.getImgName()))
+        {
+            throw new DuplicateEntityException(UserPersonalDataEntity.class.getSimpleName(), "img_name", userPersonalDataEntity.getImgName());
+        }
     }
 
     /*
