@@ -74,7 +74,10 @@ public class UserServiceTests
     @Test
     public void createAccount_imgNameAlreadyExists_throwsDuplicateEntityException()
     {
-        Mockito.when(this.userPersonalDataRepository.existsByDni(this.userPersonalData.getDni())).thenReturn(true);
+        Mockito.when(this.userPersonalDataRepository.existsByImgName(this.userPersonalData.getImgName())).thenReturn(true);
+
+        Assertions.assertThrows(DuplicateEntityException.class,
+                ()->this.userService.createAccount(this.userCredential, this.userPersonalData, null));
     }
 
     @Test
