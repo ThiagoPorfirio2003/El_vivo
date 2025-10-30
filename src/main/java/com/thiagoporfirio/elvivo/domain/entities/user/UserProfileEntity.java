@@ -32,7 +32,7 @@ public class UserProfileEntity
     @Column(name = "user_personal_data_id")
     private Integer userPersonalDataId;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
     public UserProfileEntity(UserRoles userRole, boolean isEnabled)
