@@ -69,7 +69,7 @@ public class DoctorSpecialtyRepositoryTests
     }
 
     @Test
-    public void findAllByDoctorSpecialtyId_SpecialtyId_specialtyHasOneRecord_returnsSetWithAllOfThem()
+    public void findAllByDoctorSpecialtyId_SpecialtyId_specialtyHasOneRecord_returnsSetWithIt()
     {
         Short specialtyId = 2;
 
@@ -80,7 +80,7 @@ public class DoctorSpecialtyRepositoryTests
     }
 
     @Test
-    public void findAllByDoctorSpecialtyId_SpecialtyId_specialtyHasMultipleRecords_returnsSetWithIt()
+    public void findAllByDoctorSpecialtyId_SpecialtyId_specialtyHasMultipleRecords_returnsSetWithAllOfThem()
     {
         Short specialtyId = 1;
 
@@ -92,6 +92,4 @@ public class DoctorSpecialtyRepositoryTests
             return doctorSpecialtyEntity.getSpecialtyId().shortValue() == specialtyId.shortValue();
         });
     }
-
-
 }

@@ -16,4 +16,5 @@ public class DoctorSpecialtyId
     private Integer doctorId;
     @Column(name = "specialty_id")
     private Short specialtyId;
+
 }
