@@ -53,10 +53,11 @@ public class DoctorSpecialtyServiceTests
         Assertions.assertThrows(EntityNotFoundException.class, ()-> this.doctorSpecialtyService.save(this.doctorSpecialtyEntity));
     }
 
+    @Test
     public void save_invalidSpecialtyId_doesNotThrowAnyException()
     {
-        Mockito.when(this.userProfileRepository.existsById(this.doctorSpecialtyEntity.getDoctorId())).thenReturn(true);
-        Mockito.when(this.specialtyRepository.existsById(this.doctorSpecialtyEntity.getSpecialtyId())).thenReturn(true);
+        Mockito.when(this.userProfileRepository.existsById(this.doctorSpecialtyEntity.getDoctorId())).thenReturn(false);
+        Mockito.when(this.specialtyRepository.existsById(this.doctorSpecialtyEntity.getSpecialtyId())).thenReturn(false);
         Mockito.when(this.doctorSpecialtyRepository.save(this.doctorSpecialtyEntity)).thenReturn(this.doctorSpecialtyEntity);
 
         Assertions.assertDoesNotThrow(()-> this.doctorSpecialtyService.save(this.doctorSpecialtyEntity));
