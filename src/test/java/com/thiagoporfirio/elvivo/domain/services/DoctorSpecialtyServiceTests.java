@@ -2,10 +2,10 @@ package com.thiagoporfirio.elvivo.domain.services;
 
 import com.thiagoporfirio.elvivo.domain.entities.DoctorSpecialtyEntity;
 import com.thiagoporfirio.elvivo.domain.entities.DoctorSpecialtyId;
+import com.thiagoporfirio.elvivo.domain.exceptions.DuplicateEntityException;
 import com.thiagoporfirio.elvivo.domain.repositories.DoctorSpecialtyRepository;
 import com.thiagoporfirio.elvivo.domain.repositories.SpecialtyRepository;
 import com.thiagoporfirio.elvivo.domain.repositories.user.UserProfileRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,19 +38,19 @@ public class DoctorSpecialtyServiceTests
     }
 
     @Test
-    public void save_invalidDoctorId_throwsEntityNotFoundException()
+    public void save_invalidDoctorId_throwsDuplicateEntityException()
     {
         Mockito.when(this.userProfileRepository.existsById(this.doctorSpecialtyEntity.getDoctorId())).thenReturn(true);
 
-        Assertions.assertThrows(EntityNotFoundException.class, ()-> this.doctorSpecialtyService.save(this.doctorSpecialtyEntity));
+        Assertions.assertThrows(DuplicateEntityException.class, ()-> this.doctorSpecialtyService.save(this.doctorSpecialtyEntity));
     }
 
     @Test
-    public void save_invalidSpecialtyId_throwsEntityNotFoundException()
+    public void save_invalidSpecialtyId_throwsDuplicateEntityException()
     {
         Mockito.when(this.specialtyRepository.existsById(this.doctorSpecialtyEntity.getSpecialtyId())).thenReturn(true);
 
-        Assertions.assertThrows(EntityNotFoundException.class, ()-> this.doctorSpecialtyService.save(this.doctorSpecialtyEntity));
+        Assertions.assertThrows(DuplicateEntityException.class, ()-> this.doctorSpecialtyService.save(this.doctorSpecialtyEntity));
     }
 
     @Test
