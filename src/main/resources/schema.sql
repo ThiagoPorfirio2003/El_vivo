@@ -20,11 +20,11 @@ CREATE TABLE user_profiles (
     role VARCHAR(20) NOT NULL,
     is_enabled BOOLEAN NOT NULL,
     user_credential_id INTEGER UNIQUE,
-    user_personal_data_id INTEGER NOT NULL,
+    user_personal_data_id INTEGER NOT NULL UNIQUE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_credential_id) REFERENCES user_credentials(id),
-    FOREIGN KEY (user_personal_data_id) REFERENCES user_personal_data(id),
-    UNIQUE (role, user_personal_data_id)
+    FOREIGN KEY (user_personal_data_id) REFERENCES user_personal_data(id)
+    --UNIQUE (role, user_personal_data_id)
 );
 
 --CREATE TABLE appointments_delegates (
