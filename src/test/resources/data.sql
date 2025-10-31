@@ -71,7 +71,9 @@ VALUES
 INSERT INTO doctors_specialties (doctor_id, specialty_id)
 VALUES
     (3,1),
-    (4,2);
+    (4,2),
+    (4,3),
+    (5,1);
 
 INSERT INTO doctors_schedules (work_period_id, week_day, doctor_id, specialty_id)
 VALUES
@@ -85,4 +87,14 @@ VALUES
     (2, 'MONDAY', 4, 2),
     (3, 'TUESDAY', 4, 2),
     (1, 'THURSDAY', 4, 2),
-    (2, 'THURSDAY', 4, 2);
+    (2, 'THURSDAY', 4, 2),
+
+    (1, 'WEDNESDAY', 4, 3),
+    (2, 'WEDNESDAY', 4, 3),
+    (2, 'FRIDAY', 4, 3),
+    (3, 'FRIDAY', 4, 3),
+
+    -- Doctor con id 5
+    (1, 'TUESDAY', 5, 1),
+    (2, 'TUESDAY', 5, 1),
+    (3, 'THURSDAY', 5, 1);

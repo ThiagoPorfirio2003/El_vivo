@@ -7,6 +7,6 @@ import java.util.Set;
 @NoRepositoryBean
 public interface IBaseDoctorSpecialtyId<T>
 {
-    public Set<T> findAllByDoctorSpecialtyId_DoctorId(Long doctorId);
-    public Set<T> findAllByDoctorSpecialtyId_SpecialtyId(Long specialtyId);
+    public Set<T> findAllByDoctorSpecialtyId_DoctorId(Integer doctorId);
+    public Set<T> findAllByDoctorSpecialtyId_SpecialtyId(Short specialtyId);
 }
