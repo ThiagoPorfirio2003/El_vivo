@@ -11,13 +11,13 @@ public interface DoctorScheduleRepository extends JpaRepository<DoctorScheduleEn
 {
 
     @Query("""
-    SELECT COUNT(d) > 0
+    SELECT COUNT(d)
     FROM DoctorScheduleEntity d
     WHERE d.workPeriodId = :period_id
       AND d.weekDay = :day
       AND d.doctorSpecialtyId.doctorId = :doctorId
     """)
-    public boolean existsByPeriodAndDayAndDoctor(
+    public long countByPeriodAndDayAndDoctor(
             @Param("period_id") Byte workPeriodId,
             @Param("day") WeekDays weekDay,
             @Param("doctor_id") Integer doctorId);

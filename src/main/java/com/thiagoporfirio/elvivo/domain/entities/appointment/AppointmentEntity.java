@@ -9,7 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "appointments")
@@ -26,6 +28,14 @@ public class AppointmentEntity
     private AppointmentTypes type;
     @Enumerated(EnumType.STRING)
     private AppointmentStates state;
+
+    @Column(name = "appointment_date")
+    private LocalDate date;
+    @Column(name = "appointment_time")
+    private LocalTime time;
+
+    @Column(name = "work_period_id")
+    private Byte workPeriodId;
 
     //Mas adelante
     //private AppointmentServices service

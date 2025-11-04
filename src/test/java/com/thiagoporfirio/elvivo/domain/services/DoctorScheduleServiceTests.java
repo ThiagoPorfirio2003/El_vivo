@@ -82,11 +82,11 @@ public class DoctorScheduleServiceTests
 
         Mockito.when(this.workPeriodRepository.existsById(this.doctorScheduleEntity.getWorkPeriodId())).thenReturn(true);
 
-        Mockito.when(this.doctorScheduleRepository.existsByPeriodAndDayAndDoctor(
+        Mockito.when(this.doctorScheduleRepository.countByPeriodAndDayAndDoctor(
                 this.doctorScheduleEntity.getWorkPeriodId(),
                 this.doctorScheduleEntity.getWeekDay(),
                 this.doctorScheduleEntity.getDoctorId())
-        ).thenReturn(true);
+        ).thenReturn(1L);
 
         Assertions.assertThrows(DuplicateEntityException.class, ()-> this.doctorScheduleService.save(doctorScheduleEntity));
     }
@@ -99,11 +99,11 @@ public class DoctorScheduleServiceTests
 
         Mockito.when(this.workPeriodRepository.existsById(this.doctorScheduleEntity.getWorkPeriodId())).thenReturn(true);
 
-        Mockito.when(this.doctorScheduleRepository.existsByPeriodAndDayAndDoctor(
+        Mockito.when(this.doctorScheduleRepository.countByPeriodAndDayAndDoctor(
                 this.doctorScheduleEntity.getWorkPeriodId(),
                 this.doctorScheduleEntity.getWeekDay(),
                 this.doctorScheduleEntity.getDoctorId())
-        ).thenReturn(false);
+        ).thenReturn(0L);
 
         Mockito.when(this.doctorScheduleRepository.save(this.doctorScheduleEntity))
                 .thenAnswer(answer->{

@@ -80,27 +80,32 @@ CREATE TABLE appointments (
     doctor_id INTEGER NOT NULL,
     specialty_id SMALLINT NOT NULL,
     patient_id INTEGER NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL,
+    work_period_id TINYINT NOT NULL,
 --    requested_by_profile_id INTEGER NOT NULL,
 --    state_changed_by_profile_id INTEGER,
 --    state_changed_at TIMESTAMP,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (patient_id, specialty_id, appointment_date),
     FOREIGN KEY (doctor_id, specialty_id) REFERENCES doctors_specialties(doctor_id, specialty_id),
-    FOREIGN KEY (patient_id) REFERENCES user_profiles(id)--,
+    FOREIGN KEY (patient_id) REFERENCES user_profiles(id),
+    FOREIGN KEY (work_period_id) REFERENCES work_periods(id)
 --    FOREIGN KEY (requested_by_profile_id) REFERENCES user_profiles(id),
 --    FOREIGN KEY (state_changed_by_profile_id) REFERENCES user_profiles(id)
 );
 
-CREATE TABLE scheduled_appointments (
-    id BIGINT PRIMARY KEY,
-    scheduled_at TIMESTAMP NOT NULL,
-    FOREIGN KEY (id) REFERENCES appointments(id)
-);
+--CREATE TABLE scheduled_appointments (
+--   id BIGINT PRIMARY KEY,
+--    scheduled_at TIMESTAMP NOT NULL,
+--    FOREIGN KEY (id) REFERENCES appointments(id)
+--);
 
-CREATE TABLE walk_in_appointments (
-    id INTEGER PRIMARY KEY,
-    position_in_queue TINYINT NOT NULL,
-    FOREIGN KEY (id) REFERENCES appointments(id)
-);
+--CREATE TABLE walk_in_appointments (
+--    id INTEGER PRIMARY KEY,
+--    position_in_queue TINYINT NOT NULL,
+--    FOREIGN KEY (id) REFERENCES appointments(id)
+--);
 
 CREATE TABLE invalid_appointments (
     id INTEGER PRIMARY KEY,

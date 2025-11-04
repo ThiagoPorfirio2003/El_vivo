@@ -40,10 +40,10 @@ public class DoctorScheduleService
                     doctorScheduleEntity.getWorkPeriodId()));
         }
 
-        if(this.doctorScheduleRepository.existsByPeriodAndDayAndDoctor(
+        if(this.doctorScheduleRepository.countByPeriodAndDayAndDoctor(
                 doctorScheduleEntity.getWorkPeriodId(),
                 doctorScheduleEntity.getWeekDay(),
-                doctorScheduleEntity.getDoctorId()))
+                doctorScheduleEntity.getDoctorId()) > 0)
         {
             throw new DuplicateEntityException(
                     doctorScheduleEntity.getClass().getSimpleName(),
